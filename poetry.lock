@@ -17,8 +17,8 @@ requests = ">=2.14.2"
 requests-toolbelt = ">=0.3.0"
 
 [package.extras]
-docs = ["Sphinx (>=1.0)", "sphinx-rtd-theme"]
-test = ["pytest", "pytest-xdist"]
+test = ["pytest-xdist", "pytest"]
+docs = ["sphinx-rtd-theme", "Sphinx (>=1.0)"]
 
 [[package]]
 name = "appdirs"
@@ -62,8 +62,8 @@ python-versions = ">=2.7"
 importlib-metadata = {version = "*", markers = "python_version < \"3.8\""}
 
 [package.extras]
-docs = ["sphinx", "jaraco.packaging (>=8.2)", "rst.linker (>=1.9)"]
-testing = ["pytest (>=4.6)", "pytest-flake8", "pytest-cov", "pytest-black (>=0.3.7)", "pytest-mypy", "pytest-checkdocs (>=2.4)", "pytest-enabler (>=1.0.1)"]
+testing = ["pytest-enabler (>=1.0.1)", "pytest-checkdocs (>=2.4)", "pytest-mypy", "pytest-black (>=0.3.7)", "pytest-cov", "pytest-flake8", "pytest (>=4.6)"]
+docs = ["rst.linker (>=1.9)", "jaraco.packaging (>=8.2)", "sphinx"]
 
 [[package]]
 name = "beautifulsoup4"
@@ -367,14 +367,14 @@ transip = {version = ">=2,<3", optional = true, markers = "extra == \"transip\" 
 zeep = {version = ">=3,<5", optional = true, markers = "extra == \"gransy\" or extra == \"full\""}
 
 [package.extras]
-route53 = ["boto3 (>=1,<2)"]
-full = ["boto3 (>=1,<2)", "localzone (>=0.9.8,<1)", "oci (>=2,<3)", "softlayer (>=5,<6)", "transip (>=2,<3)", "zeep (>=3,<5)"]
-ddns = ["dnspython (>=2,<3)"]
-localzone = ["localzone (>=0.9.8,<1)"]
-oci = ["oci (>=2,<3)"]
-softlayer = ["softlayer (>=5,<6)"]
-transip = ["transip (>=2,<3)"]
 gransy = ["zeep (>=3,<5)"]
+full = ["zeep (>=3,<5)", "transip (>=2,<3)", "softlayer (>=5,<6)", "oci (>=2,<3)", "localzone (>=0.9.8,<1)", "boto3 (>=1,<2)"]
+transip = ["transip (>=2,<3)"]
+softlayer = ["softlayer (>=5,<6)"]
+oci = ["oci (>=2,<3)"]
+localzone = ["localzone (>=0.9.8,<1)"]
+ddns = ["dnspython (>=2,<3)"]
+route53 = ["boto3 (>=1,<2)"]
 
 [[package]]
 name = "dnspython"
@@ -385,11 +385,11 @@ optional = false
 python-versions = ">=3.6"
 
 [package.extras]
-dnssec = ["cryptography (>=2.6)"]
-doh = ["requests", "requests-toolbelt"]
+trio = ["sniffio (>=1.1)", "trio (>=0.14.0)"]
+curio = ["sniffio (>=1.1)", "curio (>=1.2)"]
 idna = ["idna (>=2.1)"]
-curio = ["curio (>=1.2)", "sniffio (>=1.1)"]
-trio = ["trio (>=0.14.0)", "sniffio (>=1.1)"]
+doh = ["requests-toolbelt", "requests"]
+dnssec = ["cryptography (>=2.6)"]
 
 [[package]]
 name = "docutils"
@@ -513,8 +513,8 @@ optional = false
 python-versions = ">=3.6"
 
 [package.extras]
-test = ["pytest", "pytest-trio", "pytest-asyncio", "testpath", "trio", "async-timeout"]
-trio = ["trio", "async-generator"]
+trio = ["async-generator", "trio"]
+test = ["async-timeout", "trio", "testpath", "pytest-asyncio", "pytest-trio", "pytest"]
 
 [[package]]
 name = "jmespath"
@@ -701,7 +701,7 @@ optional = false
 python-versions = "*"
 
 [package.extras]
-testing = ["nose", "coverage"]
+testing = ["coverage", "nose"]
 
 [[package]]
 name = "platformdirs"
@@ -712,8 +712,8 @@ optional = false
 python-versions = ">=3.6"
 
 [package.extras]
-docs = ["Sphinx (>=4)", "furo (>=2021.7.5b38)", "proselint (>=0.10.2)", "sphinx-autodoc-typehints (>=1.12)"]
-test = ["appdirs (==1.4.4)", "pytest (>=6)", "pytest-cov (>=2.7)", "pytest-mock (>=3.6)"]
+test = ["pytest-mock (>=3.6)", "pytest-cov (>=2.7)", "pytest (>=6)", "appdirs (==1.4.4)"]
+docs = ["sphinx-autodoc-typehints (>=1.12)", "proselint (>=0.10.2)", "furo (>=2021.7.5b38)", "Sphinx (>=4)"]
 
 [[package]]
 name = "pluggy"
@@ -1124,8 +1124,8 @@ toml = ">=0.9.4"
 virtualenv = ">=16.0.0,<20.0.0 || >20.0.0,<20.0.1 || >20.0.1,<20.0.2 || >20.0.2,<20.0.3 || >20.0.3,<20.0.4 || >20.0.4,<20.0.5 || >20.0.5,<20.0.6 || >20.0.6,<20.0.7 || >20.0.7"
 
 [package.extras]
-docs = ["pygments-github-lexers (>=0.0.5)", "sphinx (>=2.0.0)", "sphinxcontrib-autoprogram (>=0.1.5)", "towncrier (>=18.5.0)"]
-testing = ["flaky (>=3.4.0)", "freezegun (>=0.3.11)", "psutil (>=5.6.1)", "pytest (>=4.0.0)", "pytest-cov (>=2.5.1)", "pytest-mock (>=1.10.0)", "pytest-randomly (>=1.0.0)", "pytest-xdist (>=1.22.2)", "pathlib2 (>=2.3.3)"]
+testing = ["pathlib2 (>=2.3.3)", "pytest-xdist (>=1.22.2)", "pytest-randomly (>=1.0.0)", "pytest-mock (>=1.10.0)", "pytest-cov (>=2.5.1)", "pytest (>=4.0.0)", "psutil (>=5.6.1)", "freezegun (>=0.3.11)", "flaky (>=3.4.0)"]
+docs = ["towncrier (>=18.5.0)", "sphinxcontrib-autoprogram (>=0.1.5)", "sphinx (>=2.0.0)", "pygments-github-lexers (>=0.0.5)"]
 
 [[package]]
 name = "tqdm"
@@ -1232,16 +1232,27 @@ python-versions = "*"
 
 [[package]]
 name = "types-requests"
-version = "2.25.6"
+version = "2.28.9"
 description = "Typing stubs for requests"
 category = "dev"
 optional = false
 python-versions = "*"
 
+[package.dependencies]
+types-urllib3 = "<1.27"
+
 [[package]]
 name = "types-setuptools"
 version = "57.0.2"
 description = "Typing stubs for setuptools"
+category = "dev"
+optional = false
+python-versions = "*"
+
+[[package]]
+name = "types-urllib3"
+version = "1.26.23"
+description = "Typing stubs for urllib3"
 category = "dev"
 optional = false
 python-versions = "*"
@@ -1608,8 +1619,10 @@ cryptography = [
     {file = "cryptography-3.4.7-cp36-abi3-win_amd64.whl", hash = "sha256:de4e5f7f68220d92b7637fc99847475b59154b7a1b3868fb7385337af54ac9ca"},
     {file = "cryptography-3.4.7-pp36-pypy36_pp73-manylinux2010_x86_64.whl", hash = "sha256:26965837447f9c82f1855e0bc8bc4fb910240b6e0d16a664bb722df3b5b06873"},
     {file = "cryptography-3.4.7-pp36-pypy36_pp73-manylinux2014_x86_64.whl", hash = "sha256:eb8cc2afe8b05acbd84a43905832ec78e7b3873fb124ca190f574dca7389a87d"},
+    {file = "cryptography-3.4.7-pp37-pypy37_pp73-macosx_10_10_x86_64.whl", hash = "sha256:b01fd6f2737816cb1e08ed4807ae194404790eac7ad030b34f2ce72b332f5586"},
     {file = "cryptography-3.4.7-pp37-pypy37_pp73-manylinux2010_x86_64.whl", hash = "sha256:7ec5d3b029f5fa2b179325908b9cd93db28ab7b85bb6c1db56b10e0b54235177"},
     {file = "cryptography-3.4.7-pp37-pypy37_pp73-manylinux2014_x86_64.whl", hash = "sha256:ee77aa129f481be46f8d92a1a7db57269a2f23052d5f2433b4621bb457081cc9"},
+    {file = "cryptography-3.4.7-pp37-pypy37_pp73-win_amd64.whl", hash = "sha256:bf40af59ca2465b24e54f671b2de2c59257ddc4f7e5706dbd6930e26823668d3"},
     {file = "cryptography-3.4.7.tar.gz", hash = "sha256:3d10de8116d25649631977cb37da6cbdd2d6fa0e0281d014a5b7d337255ca713"},
 ]
 dataclasses = [
@@ -1704,6 +1717,8 @@ lxml = [
     {file = "lxml-4.6.3-cp27-cp27m-win_amd64.whl", hash = "sha256:8157dadbb09a34a6bd95a50690595e1fa0af1a99445e2744110e3dca7831c4ee"},
     {file = "lxml-4.6.3-cp27-cp27mu-manylinux1_i686.whl", hash = "sha256:7728e05c35412ba36d3e9795ae8995e3c86958179c9770e65558ec3fdfd3724f"},
     {file = "lxml-4.6.3-cp27-cp27mu-manylinux1_x86_64.whl", hash = "sha256:4bff24dfeea62f2e56f5bab929b4428ae6caba2d1eea0c2d6eb618e30a71e6d4"},
+    {file = "lxml-4.6.3-cp310-cp310-manylinux_2_12_i686.manylinux2010_i686.manylinux_2_24_i686.whl", hash = "sha256:64812391546a18896adaa86c77c59a4998f33c24788cadc35789e55b727a37f4"},
+    {file = "lxml-4.6.3-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.manylinux_2_24_x86_64.whl", hash = "sha256:c1a40c06fd5ba37ad39caa0b3144eb3772e813b5fb5b084198a985431c2f1e8d"},
     {file = "lxml-4.6.3-cp35-cp35m-manylinux1_i686.whl", hash = "sha256:74f7d8d439b18fa4c385f3f5dfd11144bb87c1da034a466c5b5577d23a1d9b51"},
     {file = "lxml-4.6.3-cp35-cp35m-manylinux1_x86_64.whl", hash = "sha256:f90ba11136bfdd25cae3951af8da2e95121c9b9b93727b1b896e3fa105b2f586"},
     {file = "lxml-4.6.3-cp35-cp35m-manylinux2010_i686.whl", hash = "sha256:4c61b3a0db43a1607d6264166b230438f85bfed02e8cff20c22e564d0faff354"},
@@ -2102,12 +2117,16 @@ types-pyyaml = [
     {file = "types_PyYAML-5.4.6-py3-none-any.whl", hash = "sha256:96f8d3d96aa1a18a465e8f6a220e02cff2f52632314845a364ecbacb0aea6e30"},
 ]
 types-requests = [
-    {file = "types-requests-2.25.6.tar.gz", hash = "sha256:e21541c0f55c066c491a639309159556dd8c5833e49fcde929c4c47bdb0002ee"},
-    {file = "types_requests-2.25.6-py3-none-any.whl", hash = "sha256:a5a305b43ea57bf64d6731f89816946a405b591eff6de28d4c0fd58422cee779"},
+    {file = "types-requests-2.28.9.tar.gz", hash = "sha256:feaf581bd580497a47fe845d506fa3b91b484cf706ff27774e87659837de9962"},
+    {file = "types_requests-2.28.9-py3-none-any.whl", hash = "sha256:86cb66d3de2f53eac5c09adc42cf6547eefbd0c7e1210beca1ee751c35d96083"},
 ]
 types-setuptools = [
     {file = "types-setuptools-57.0.2.tar.gz", hash = "sha256:4ead432cc394b8de5ee94a312494f3c730d21dbfef37f300a6ac5e742271d735"},
     {file = "types_setuptools-57.0.2-py3-none-any.whl", hash = "sha256:62c8dc465f29eeaad6b9025645138738d3df1cafc70cb0b14aea700946f2cbb7"},
+]
+types-urllib3 = [
+    {file = "types-urllib3-1.26.23.tar.gz", hash = "sha256:b78e819f0e350221d0689a5666162e467ba3910737bafda14b5c2c85e9bb1e56"},
+    {file = "types_urllib3-1.26.23-py3-none-any.whl", hash = "sha256:333e675b188a1c1fd980b4b352f9e40572413a4c1ac689c23cd546e96310070a"},
 ]
 typing-extensions = [
     {file = "typing_extensions-3.10.0.0-py2-none-any.whl", hash = "sha256:0ac0f89795dd19de6b97debb0c6af1c70987fd80a2d62d1958f7e56fcc31b497"},
